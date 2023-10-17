@@ -1,4 +1,8 @@
-const PlayerDetail = ( player ) => {
+import { getPlayerById } from "@/lib/prisma/players"
+
+const PlayerDetail = async ( params ) => {
+   console.log(params.userId)
+   const player = await getPlayerById(params.userId)
    return (
       <section className='px-4 py-4'>
          <div className="relative h-40 rounded-full">
