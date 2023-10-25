@@ -6,12 +6,12 @@ export const GET = async (req:Request, res:NextResponse) => {
    try {
       const id = req.url?.split("/players/")[1];
       await main();
-      const post = await prisma.player.findFirst({ where: { id } });
+      const player = await prisma.player.findFirst({ where: { id } });
       
-      if (!post) {
+      if (!player) {
          return NextResponse.json({message: "Player not found"}, {status: 404});
       }
-      return NextResponse.json({message: "Success", post}, {status: 200});
+      return NextResponse.json({message: "Success", player}, {status: 200});
    } catch (error) {
       return NextResponse.json({message: "Error: " + error}, {status: 500});
    } finally {
