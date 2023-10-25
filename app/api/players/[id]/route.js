@@ -24,13 +24,13 @@ export const PUT = async (req, res) => {
       const id = req.url?.split("/players/")[1];
       const { user, userId, usaWPnum, name, gender, age, dob, year, email, phone, street, city, state, zip, referrer, isMaster, duesPaid, tournPaid, agreeCoC} = await req.json();
       await main();
-      const post = await prisma.player.update({data: { 
+      const player = await prisma.player.update({data: { 
          user, userId, usaWPnum, name, gender, age, dob, year, email, phone, street, city, state, zip, referrer, isMaster, duesPaid, tournPaid, agreeCoC
       }, where: {id}});
-      if (!post) {
+      if (!player) {
          return NextResponse.json({message: "Player not found"}, {status: 404});
       }
-       return NextResponse.json({message: "Update Successful", post}, {status: 200});
+       return NextResponse.json({message: "Update Successful", player}, {status: 200});
    } catch (error) {
       return NextResponse.json({message: "Error: " + error}, {status: 500});
    } finally {
@@ -42,11 +42,11 @@ export const DELETE = async (req, res) => {
    try {
       const id = req.url?.split("/players/")[1];
       await main();
-      const post = await prisma.player.delete({where: {id}});
-      if (!post) {
+      const player = await prisma.player.delete({where: {id}});
+      if (!player) {
          return NextResponse.json({message: "Player not found"}, {status: 404});
       }
-       return NextResponse.json({message: "Delete Successful", post}, {status: 200});
+       return NextResponse.json({message: "Delete Successful", player}, {status: 200});
    } catch (error) {
       return NextResponse.json({message: "Error: " + error}, {status: 500});
    } finally {
