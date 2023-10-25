@@ -6,10 +6,11 @@ const page = async ({params}) => {
   
     
     const player = await getPlayerById(params.userId);
+    
    return (
       <section className='px-4 py-4'>
          <div className="relative h-40 rounded-full">
-            <h1 className='mb-3 text-2xl font-semibold tracking-tight'>Player Details</h1>
+            <h1 className='mb-3 text-2xl font-semibold tracking-tight'>Player Details{params.userId}</h1>
             <p className="text-xl font-bold">{player.name}</p>
             <p className="text-sm text-stone-800">USA Water Polo #:{player.usaWPnum}</p>
             <p className="text-sm text-stone-800">Email: {player.email}</p>
