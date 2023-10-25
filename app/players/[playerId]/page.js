@@ -10,8 +10,7 @@ const page = async ({params}) => {
    return (
       <section className='px-4 py-4'>
          <div className="relative h-40 rounded-full">
-            <h1 className='mb-3 text-2xl font-semibold tracking-tight'>Player Details {params.playerId}</h1> //this works, it shows up in the browser
-            <p className="text-xl font-bold"> {player.name}</p> //none of these work, they are blank in the browser
+            <h1 className='mb-3 text-2xl font-semibold tracking-tight'>Player Details {params.playerId}</h1>
             <p className="text-sm text-stone-800">USA Water Polo #: {player.usaWPnum}</p>
             <p className="text-sm text-stone-800">Email: {player.email}</p>
             <p className="text-sm text-stone-800">Phone: {player.phone}</p>
