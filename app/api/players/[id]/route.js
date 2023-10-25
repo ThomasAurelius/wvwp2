@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server"
 import { main } from "../route"
-import prisma from "@/prisma"
+import prisma from "@prisma"
 
-export const GET = async (req, res ) => {
+export const GET = async (req, {params} ) => {
    try {
-      const id = req.url?.split("/players/")[1];
+      const { id } = params;
       await main();
-      const player = await prisma.player.findFirst({ where: { id: id } });
+      
+      const player = await prisma.player.findUnique({ where: { id } });
       
       if (!player) {
          return NextResponse.json({message: "Player not found"}, {status: 404});
@@ -16,7 +17,7 @@ export const GET = async (req, res ) => {
       return NextResponse.json({message: "Error: " + error}, {status: 500});
    } finally {
       await prisma.$disconnect()
-   }
+   } 
 }
 
 export const PUT = async (req, res) => {
