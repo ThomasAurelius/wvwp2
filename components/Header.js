@@ -16,6 +16,9 @@ const Header = () => {
                <li>
                   <Link className='text-sm font-medium uppercase text-stone-500 hover:text-stone-600' href='/admin'>Admin</Link>
                </li>
+               <li>
+                  <Link className='text-sm font-medium uppercase text-stone-500 hover:text-stone-600' href='/login'>Login</Link>
+               </li>
 
             </ul>
          </nav>
